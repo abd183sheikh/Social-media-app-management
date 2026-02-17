@@ -22,7 +22,7 @@ export function AccountCard({ account, onDisconnect, onSync }: AccountCardProps)
   const [showConfirm, setShowConfirm] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
 
-  const PlatformIcon = platformIcons[account.platform];
+  const PlatformIcon = platformIcons[account.platform as keyof typeof platformIcons];
   const platformColor = getPlatformColor(account.platform);
 
   const handleSync = async () => {
