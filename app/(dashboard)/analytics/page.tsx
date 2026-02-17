@@ -155,7 +155,7 @@ export default function AnalyticsPage() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
                   <XAxis dataKey="date" stroke="#6B7280" fontSize={12} />
                   <YAxis stroke="#6B7280" fontSize={12} tickFormatter={(v) => formatNumber(v)} />
-                  <Tooltip formatter={(v: number) => formatNumber(v)} />
+                  <Tooltip formatter={(v) => formatNumber(v as number)} />
                   <Line type="monotone" dataKey="instagram" stroke="#E4405F" strokeWidth={2} dot={false} />
                   <Line type="monotone" dataKey="facebook" stroke="#1877F2" strokeWidth={2} dot={false} />
                   <Line type="monotone" dataKey="twitter" stroke="#1DA1F2" strokeWidth={2} dot={false} />
@@ -201,7 +201,7 @@ export default function AnalyticsPage() {
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
-                  <Tooltip formatter={(v: number) => formatNumber(v)} />
+                  <Tooltip formatter={(v: number |undefined ) => formatNumber(v as number)} />
                 </PieChart>
               </ResponsiveContainer>
             </div>
@@ -229,7 +229,7 @@ export default function AnalyticsPage() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" vertical={false} />
                 <XAxis dataKey="date" stroke="#6B7280" fontSize={12} />
                 <YAxis stroke="#6B7280" fontSize={12} tickFormatter={(v) => formatNumber(v)} />
-                <Tooltip formatter={(v: number) => formatNumber(v)} />
+                <Tooltip formatter={(v: number | undefined) => formatNumber(v as number)} />
                 <Bar dataKey="reach" fill="#3B82F6" radius={[4, 4, 0, 0]} />
                 <Bar dataKey="impressions" fill="#93C5FD" radius={[4, 4, 0, 0]} />
               </BarChart>

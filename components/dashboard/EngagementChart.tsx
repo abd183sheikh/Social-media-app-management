@@ -49,7 +49,7 @@ export function EngagementChart({ data }: EngagementChartProps) {
                   borderRadius: "8px",
                   boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
                 }}
-                formatter={(value: number) => [formatNumber(value), "Interactions"]}
+                formatter={(value: number | undefined) => [formatNumber(value as number), "Interactions"]}
               />
               <Bar
                 dataKey="value"
