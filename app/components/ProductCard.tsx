@@ -1,0 +1,41 @@
+"use client";
+
+import Image from "next/image";
+import { Product, useCart } from "../context/CartContext";
+
+interface ProductCardProps {
+  product: Product;
+}
+
+export default function ProductCard({ product }: ProductCardProps) {
+  const { addToCart } = useCart();
+
+  return (
+    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+      <div className="relative h-48 w-full">
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          className="object-cover"
+          unoptimized
+        />
+      </div>
+      <div className="p-4">
+        <h3 className="text-lg font-semibold text-gray-800">{product.name}</h3>
+        <p className="text-gray-600 text-sm mt-1">{product.description}</p>
+        <div className="flex items-center justify-between mt-4 ">
+          <span className="text-xl font-bold text-gray-900">
+            ${product.price.toFixed(2)}
+          </span>
+          <button
+            onClick={() => addToCart(product)}
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors cursor-pointer"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
