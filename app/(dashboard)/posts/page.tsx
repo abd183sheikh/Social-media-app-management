@@ -5,19 +5,20 @@ import Link from "next/link";
 import { Card, Button } from "@/components/ui";
 import { PostCard } from "@/components/posts/PostCard";
 import { Plus, Filter } from "lucide-react";
-import type { Post, PostStatus } from "@/types";
+import { PostStatus, Platform } from "@/types";
+import type { Post } from "@/types";
 
 const mockPosts: Post[] = [
   {
     id: "1",
     userId: "1",
     socialAccountId: "1",
-    platform: "INSTAGRAM",
+    platform: Platform.INSTAGRAM,
     content: "Check out our latest product launch! 🚀 We've been working on this for months and can't wait to share it with you.",
     mediaUrl: null,
     scheduledAt: null,
     publishedAt: new Date("2024-01-15T10:00:00"),
-    status: "PUBLISHED",
+    status: PostStatus.PUBLISHED,
     externalId: "123",
     createdAt: new Date("2024-01-15"),
     updatedAt: new Date("2024-01-15"),
@@ -26,12 +27,12 @@ const mockPosts: Post[] = [
     id: "2",
     userId: "1",
     socialAccountId: "2",
-    platform: "TWITTER",
+    platform: Platform.TWITTER,
     content: "Big announcement coming soon! Stay tuned 👀 #ComingSoon #Excited",
     mediaUrl: null,
     scheduledAt: new Date("2024-01-20T14:00:00"),
     publishedAt: null,
-    status: "SCHEDULED",
+    status: PostStatus.SCHEDULED,
     externalId: null,
     createdAt: new Date("2024-01-14"),
     updatedAt: new Date("2024-01-14"),
@@ -40,12 +41,12 @@ const mockPosts: Post[] = [
     id: "3",
     userId: "1",
     socialAccountId: "3",
-    platform: "FACEBOOK",
+    platform: Platform.FACEBOOK,
     content: "Thank you for 100K followers! 🎉 Your support means everything to us. Here's to the next milestone!",
     mediaUrl: null,
     scheduledAt: null,
     publishedAt: new Date("2024-01-13T16:30:00"),
-    status: "PUBLISHED",
+    status: PostStatus.SCHEDULED,
     externalId: "456",
     createdAt: new Date("2024-01-13"),
     updatedAt: new Date("2024-01-13"),
@@ -54,12 +55,12 @@ const mockPosts: Post[] = [
     id: "4",
     userId: "1",
     socialAccountId: "1",
-    platform: "INSTAGRAM",
+    platform: Platform.INSTAGRAM,
     content: "Behind the scenes of our latest photoshoot 📸",
     mediaUrl: null,
     scheduledAt: null,
     publishedAt: null,
-    status: "DRAFT",
+    status: PostStatus.DRAFT,
     externalId: null,
     createdAt: new Date("2024-01-12"),
     updatedAt: new Date("2024-01-12"),
@@ -93,8 +94,11 @@ export default function PostsPage() {
       <div className="flex items-center justify-center h-64">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
       </div>
+      
     );
+    
   }
+  
 
   return (
     <div className="space-y-6">
@@ -115,7 +119,7 @@ export default function PostsPage() {
       <div className="flex items-center gap-2">
         <Filter className="h-4 w-4 text-gray-400" />
         <div className="flex gap-2">
-          {(["ALL", "DRAFT", "SCHEDULED", "PUBLISHED"] as const).map((status) => (
+          {(["ALL", PostStatus.DRAFT, PostStatus.SCHEDULED, PostStatus.PUBLISHED] as const).map((status) => (
             <Button
               key={status}
               variant={filter === status ? "primary" : "outline"}
