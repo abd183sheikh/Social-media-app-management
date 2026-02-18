@@ -1,5 +1,5 @@
 "use client";
-import type { Platform } from "@prisma/client";
+import type { Platform } from "@/types";
 import { useState } from "react";
 import { Card, Button, ConfirmModal } from "@/components/ui";
 import { formatNumber, getPlatformColor, getPlatformName, getRelativeTime } from "@/lib/utils";
