@@ -1,6 +1,15 @@
-import type { Platform, PostStatus } from "@prisma/client";
+export enum Platform {
+  INSTAGRAM = "INSTAGRAM",
+  FACEBOOK = "FACEBOOK",
+  TWITTER = "TWITTER",
+}
 
-export type { Platform, PostStatus };
+export enum PostStatus {
+  DRAFT = "DRAFT",
+  SCHEDULED = "SCHEDULED",
+  PUBLISHED = "PUBLISHED",
+  FAILED = "FAILED",
+}
 
 export interface User {
   id: string;

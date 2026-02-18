@@ -1,9 +1,9 @@
 "use client";
-
+import type { Platform } from "@/types";
 import { useState } from "react";
 import { Card, Button, ConfirmModal } from "@/components/ui";
 import { formatNumber, getPlatformColor, getPlatformName, getRelativeTime } from "@/lib/utils";
-import { Instagram, Facebook, Twitter, RefreshCw, Trash2, ExternalLink } from "lucide-react";
+import { Instagram, Facebook, Twitter, RefreshCw, Trash2, ExternalLink, LucideIcon } from "lucide-react";
 import type { SocialAccount } from "@/types";
 
 interface AccountCardProps {
@@ -12,17 +12,23 @@ interface AccountCardProps {
   onSync: () => void;
 }
 
-const platformIcons = {
+const platformIcons: Record<Platform, LucideIcon> = {    /*add this*/ 
   INSTAGRAM: Instagram,
   FACEBOOK: Facebook,
   TWITTER: Twitter,
 };
+// const platformIcons = {
+//   INSTAGRAM: Instagram,
+//   FACEBOOK: Facebook,
+//   TWITTER: Twitter,
+// };
 
 export function AccountCard({ account, onDisconnect, onSync }: AccountCardProps) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
 
-  const PlatformIcon = platformIcons[account.platform];
+  // const PlatformIcon = platformIcons[account.platform as keyof typeof platformIcons];
+  const PlatformIcon = platformIcons[account.platform]; // add this
   const platformColor = getPlatformColor(account.platform);
 
   const handleSync = async () => {

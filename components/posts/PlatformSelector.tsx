@@ -3,7 +3,7 @@
 import { getPlatformColor, getPlatformName } from "@/lib/utils";
 import { Instagram, Facebook, Twitter, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { Platform } from "@/types";
+import { Platform } from "@/types";
 
 interface PlatformSelectorProps {
   selected: Platform[];
@@ -11,9 +11,9 @@ interface PlatformSelectorProps {
 }
 
 const platforms: { id: Platform; icon: typeof Instagram }[] = [
-  { id: "INSTAGRAM", icon: Instagram },
-  { id: "FACEBOOK", icon: Facebook },
-  { id: "TWITTER", icon: Twitter },
+  { id: Platform.INSTAGRAM, icon: Instagram },
+  { id: Platform.FACEBOOK, icon: Facebook },
+  { id: Platform.TWITTER, icon: Twitter },
 ];
 
 export function PlatformSelector({ selected, onChange }: PlatformSelectorProps) {

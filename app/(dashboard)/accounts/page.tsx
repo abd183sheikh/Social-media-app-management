@@ -5,14 +5,15 @@ import { Card, CardHeader, CardTitle, CardContent, Button } from "@/components/u
 import { AccountCard } from "@/components/accounts/AccountCard";
 import { ConnectButton } from "@/components/accounts/ConnectButton";
 import { Plus } from "lucide-react";
-import type { SocialAccount } from "@/types";
+import { PostStatus, Platform,SocialAccount } from "@/types";
+// import type { SocialAccount, Platform } from "@/types";
 
 // Mock data - replace with actual API calls
 const mockAccounts: SocialAccount[] = [
   {
     id: "1",
     userId: "1",
-    platform: "INSTAGRAM",
+    platform: Platform.INSTAGRAM,
     username: "mybusiness",
     profileUrl: "https://instagram.com/mybusiness",
     avatarUrl: null,
@@ -23,7 +24,7 @@ const mockAccounts: SocialAccount[] = [
   {
     id: "2",
     userId: "1",
-    platform: "FACEBOOK",
+    platform: Platform.FACEBOOK,
     username: "My Business Page",
     profileUrl: "https://facebook.com/mybusiness",
     avatarUrl: null,
@@ -34,7 +35,7 @@ const mockAccounts: SocialAccount[] = [
   {
     id: "3",
     userId: "1",
-    platform: "TWITTER",
+    platform: Platform.TWITTER,
     username: "@mybusiness",
     profileUrl: "https://twitter.com/mybusiness",
     avatarUrl: null,
@@ -127,9 +128,9 @@ export default function AccountsPage() {
               <CardTitle>Connect a Platform</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <ConnectButton platform="INSTAGRAM" />
-              <ConnectButton platform="FACEBOOK" />
-              <ConnectButton platform="TWITTER" />
+              <ConnectButton platform={Platform.INSTAGRAM} />
+              <ConnectButton platform={Platform.FACEBOOK} />
+              <ConnectButton platform={Platform.TWITTER} />
               <div className="pt-4">
                 <Button
                   variant="outline"

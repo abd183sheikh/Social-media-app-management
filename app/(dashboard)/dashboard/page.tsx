@@ -7,7 +7,7 @@ import { EngagementChart } from "@/components/dashboard/EngagementChart";
 import { RecentPosts } from "@/components/dashboard/RecentPosts";
 import { PlatformOverview } from "@/components/dashboard/PlatformOverview";
 import { Users, TrendingUp, FileText, Link2 } from "lucide-react";
-import type { DashboardStats, ChartDataPoint, Post, PlatformStats } from "@/types";
+import type { DashboardStats, ChartDataPoint, Post, PlatformStats, Platform } from "@/types";
 
 // Mock data - replace with actual API calls
 const mockStats: DashboardStats = {
@@ -44,12 +44,12 @@ const mockPosts: Post[] = [
     id: "1",
     userId: "1",
     socialAccountId: "1",
-    platform: "INSTAGRAM",
+    platform: "INSTAGRAM" as Platform,
     content: "Check out our latest product launch! 🚀",
     mediaUrl: null,
     scheduledAt: null,
     publishedAt: new Date("2024-01-15"),
-    status: "PUBLISHED",
+    status: "PUBLISHED" as any,
     externalId: null,
     createdAt: new Date("2024-01-15"),
     updatedAt: new Date("2024-01-15"),
@@ -58,12 +58,12 @@ const mockPosts: Post[] = [
     id: "2",
     userId: "1",
     socialAccountId: "2",
-    platform: "TWITTER",
+    platform: "TWITTER" as Platform,
     content: "Big announcement coming soon! Stay tuned 👀",
     mediaUrl: null,
     scheduledAt: new Date("2024-01-20"),
     publishedAt: null,
-    status: "SCHEDULED",
+    status: "SCHEDULED" as any,
     externalId: null,
     createdAt: new Date("2024-01-14"),
     updatedAt: new Date("2024-01-14"),
@@ -72,12 +72,12 @@ const mockPosts: Post[] = [
     id: "3",
     userId: "1",
     socialAccountId: "3",
-    platform: "FACEBOOK",
+    platform: "FACEBOOK" as Platform,
     content: "Thank you for 100K followers! 🎉",
     mediaUrl: null,
     scheduledAt: null,
     publishedAt: new Date("2024-01-13"),
-    status: "PUBLISHED",
+    status: "PUBLISHED" as any,
     externalId: null,
     createdAt: new Date("2024-01-13"),
     updatedAt: new Date("2024-01-13"),
@@ -85,9 +85,9 @@ const mockPosts: Post[] = [
 ];
 
 const mockPlatformStats: PlatformStats[] = [
-  { platform: "INSTAGRAM", followers: 65000, engagement: 5.2, posts: 78 },
-  { platform: "FACEBOOK", followers: 42000, engagement: 3.8, posts: 52 },
-  { platform: "TWITTER", followers: 18400, engagement: 2.9, posts: 26 },
+  { platform: "INSTAGRAM" as Platform, followers: 65000, engagement: 5.2, posts: 78 },
+  { platform: "FACEBOOK" as Platform, followers: 42000, engagement: 3.8, posts: 52 },
+  { platform: "TWITTER" as Platform, followers: 18400, engagement: 2.9, posts: 26 },
 ];
 
 export default function DashboardPage() {
