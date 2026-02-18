@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# First App - Social Media Management Platform
+
+A Next.js application for managing social media accounts, scheduling posts, and tracking analytics across multiple platforms.
+
+## Features
+
+- **Authentication**: User authentication with NextAuth.js supporting credentials and social login
+- **Social Media Integration**: Connect and manage Instagram, Facebook, and Twitter accounts
+- **Post Management**: Create, schedule, and publish posts across platforms
+- **Analytics Dashboard**: Track followers, engagement, impressions, and other metrics
+- **Multi-Platform Support**: Manage multiple social accounts from a single interface
+
+## Tech Stack
+
+- **Framework**: Next.js 16.1.6 with App Router
+- **Language**: TypeScript
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: NextAuth.js v5
+- **State Management**: Zustand
+- **Styling**: Tailwind CSS v4
+- **Charts**: Recharts
+- **Validation**: Zod
+- **Icons**: Lucide React
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 20+ installed
+- PostgreSQL database (or Neon for serverless)
+- Instagram/Facebook/Twitter API credentials (optional)
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd first_app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables:
+Create a `.env` file in the root directory:
+```env
+DATABASE_URL="your-postgresql-connection-string"
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-secret-key"
+INSTAGRAM_CLIENT_ID="your-instagram-client-id"
+INSTAGRAM_CLIENT_SECRET="your-instagram-client-secret"
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Initialize the database:
+```bash
+npx prisma generate
+npx prisma db push
+```
 
-## Learn More
+5. Run the development server:
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Available Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+first_app/
+├── app/              # Next.js app router pages
+│   ├── (auth)/      # Authentication pages (login, register)
+│   ├── (dashboard)/ # Dashboard pages (analytics, posts, settings)
+│   ├── api/         # API routes
+│   └── components/  # Shared components
+├── lib/             # Utility functions and database client
+├── prisma/          # Database schema and migrations
+└── public/          # Static assets
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Database Schema
+
+The application uses Prisma with the following main models:
+- **User**: User accounts and profiles
+- **SocialAccount**: Connected social media accounts
+- **Post**: Scheduled and published posts
+- **Analytics**: Social media metrics and engagement data
+- **Session/Account**: NextAuth.js authentication tables
+
+## Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Import the project in Vercel
+3. Add environment variables in Vercel dashboard
+4. Deploy
+
+The `postinstall` script automatically generates Prisma Client during deployment.
+
+### Environment Variables for Production
+
+Ensure these are set in your production environment:
+- `DATABASE_URL` - PostgreSQL connection string
+- `NEXTAUTH_URL` - Your production URL
+- `NEXTAUTH_SECRET` - Strong random secret
+- Social media API credentials (as needed)
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is private and not licensed for public use.
